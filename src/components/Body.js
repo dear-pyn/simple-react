@@ -1,12 +1,12 @@
 import React from 'react'
-import Counter from './Counter.js'
+import CounterContainer from './CounterContainer'
 
 class Body extends React.Component {
   render() {
     return (
       <div>
         <p>{this.props.content}</p>
-        <Counter />
+        <CounterContainer />
       </div>
     )
   }
