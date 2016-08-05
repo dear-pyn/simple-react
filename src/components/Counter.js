@@ -1,18 +1,32 @@
 import React from 'react'
 import './Counter.scss'
+import ClickStore from '../ClickStore.js'
+import ClickActions from '../ClickActions.js'
 
 class Counter extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      clickCount: 0
+      clickCount: ClickStore.getClickCount()
     }
   }
 
-  handleClick = () => {
+  componentDidMount() {
+    ClickStore.addChangeListener(this.onChange)
+  }
+
+  componentWillUnmount() {
+    ClickStore.removeChangeListener(this.onChange)
+  }
+
+  onChange = () => {
     this.setState({
-      clickCount: this.state.clickCount + 1
+      clickCount: ClickStore.getClickCount()
     })
+  }
+
+  handleClick = () => {
+    ClickActions.increment()
   }
 
   render() {
