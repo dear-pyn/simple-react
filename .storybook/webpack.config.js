@@ -1,4 +1,7 @@
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+const postCssInputRange = require('postcss-input-range')
+
 
 module.exports = {
   module: {
@@ -9,5 +12,8 @@ module.exports = {
         include: path.resolve(__dirname, '../')
       }
     ]
+  },
+  postcss: function() {
+    return [autoprefixer, postCssInputRange];
   }
 }

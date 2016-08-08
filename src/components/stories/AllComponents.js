@@ -24,3 +24,13 @@ storiesOf('Slider', module)
       </div>
     </div>
   ));
+
+
+import SliderInputRange from '../SliderInputRange'
+
+storiesOf('SliderInputRange', module)
+  .add('Input Range Slider', () => (
+    <div className='container'>
+      <SliderInputRange />
+    </div>
+  ))

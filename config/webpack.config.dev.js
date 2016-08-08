@@ -1,5 +1,6 @@
 var path = require('path');
 var autoprefixer = require('autoprefixer');
+var postCssInputRange = require('postcss-input-range')
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -87,7 +88,7 @@ module.exports = {
     useEslintrc: false
   },
   postcss: function() {
-    return [autoprefixer];
+    return [autoprefixer, postCssInputRange];
   },
   plugins: [
     new HtmlWebpackPlugin({
