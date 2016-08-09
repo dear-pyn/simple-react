@@ -27,4 +27,9 @@
     border-radius: 1em;
     border: 0.2px solid #010101;
   }
+
+  // Firefox's outline bug. For more info see http://stackoverflow.com/questions/18794026/remove-dotted-outline-from-range-input-element-in-firefox#answer-21568066
+  &::-moz-focus-outer {
+    border: 0;
+  }
 }
