@@ -8,7 +8,7 @@ const MAX_COMPUTED_VALUE = 10
 
 class SliderInputRange  extends React.Component {
   state = {
-    value: 50
+    value: 500
   }
 
   onChange = (e) => {
@@ -24,7 +24,7 @@ class SliderInputRange  extends React.Component {
       max: MAX_VALUE,
       minComputed: MIN_COMPUTED_VALUE,
       maxComputed: MAX_COMPUTED_VALUE
-    })
+    }) * (MAX_VALUE - MIN_VALUE) / (MAX_COMPUTED_VALUE - MIN_COMPUTED_VALUE)
 
     this.setState({
       value: roundedValue
@@ -39,7 +39,7 @@ class SliderInputRange  extends React.Component {
           max: MAX_VALUE,
           minComputed: MIN_COMPUTED_VALUE,
           maxComputed: MAX_COMPUTED_VALUE
-        }) * (MAX_COMPUTED_VALUE - MIN_COMPUTED_VALUE) / (MAX_VALUE - MIN_VALUE)}</p>
+        })}</p>
         <input
         className='slider'
         type='range'
@@ -54,13 +54,10 @@ class SliderInputRange  extends React.Component {
 }
 
 function roundValue(value, { min, max, minComputed, maxComputed }) {
-  const range = maxComputed - minComputed
-  const rangeValue = (max - min) / range
-  const baseValue = Math.floor(value / rangeValue) * rangeValue
-  const offset = value % rangeValue
-  const roundedValue = baseValue + (offset > rangeValue / 2 ? rangeValue : 0)
-  console.log(`value: ${value}, baseValue: ${baseValue}, offset: ${offset}, rangeValue: ${rangeValue}`)
-  console.log(roundedValue)
+  const computedRange = maxComputed - minComputed
+  const range = max - min
+  const roundedValue = Math.round(value * computedRange / range)
+
   return roundedValue
 }
 
