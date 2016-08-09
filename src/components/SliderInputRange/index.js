@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles.scss'
+import './styles.scss'
 
 const MIN_VALUE = 0
 const MAX_VALUE = 1000
