@@ -12,7 +12,7 @@ storiesOf('Counter', module)
   ));
 
 const style = {
-  padding: '2em 0',
+  padding: '2em 2px',
   width: '20em',
   display: 'inline-block'
 }
